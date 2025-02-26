@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get in Touch</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+</head>
+<body>
+
+    <!-- ====== Header ====== -->
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </a>
+            <span>Document Classifier</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('admin_bp.dashboard') }}">Administration</a></li>
+                <li><a href="{{ url_for('classify_document') }}">Classification</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ====== Seção de Contato ====== -->
+    <section class="contact-section">
+        <h1>Get in Touch</h1>
+        <p>Follow us on social media and stay updated with our latest news.</p>
+
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" class="social-button facebook">Facebook</a>
+            <a href="https://twitter.com" target="_blank" class="social-button twitter">Twitter</a>
+            <a href="https://instagram.com" target="_blank" class="social-button instagram">Instagram</a>
+            <a href="https://linkedin.com" target="_blank" class="social-button linkedin">LinkedIn</a>
+            <a href="mailto:seuemail@example.com" class="social-button email">Send Email</a> <!-- Botão de Email -->
+        </div>
+
+        <!-- ====== Botão de Return to Home ====== -->
+        <div class="button-container">
+            <a href="{{ url_for('home') }}" class="button button-red">Return to Home</a>
+        </div>
+    </section>
+
+</body>
+</html>

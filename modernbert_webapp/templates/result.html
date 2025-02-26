@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Classificação</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">    
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script>
+    function gerarPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF('p', 'mm', 'a4');
+        let y = 10; // Posição inicial do conteúdo no PDF
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16);
+        doc.text("Resultado da Classificação", 105, y, { align: "center" });
+        y += 10;
+
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Modelo Utilizado: {{ model_identifier }}`, 10, y);
+        y += 8;
+        doc.text(`Arquivo: {{ original_filename }}`, 10, y);
+        y += 8;
+
+        doc.setFont("helvetica", "bold");
+        doc.text("Classificação do Documento Completo", 10, y);
+        y += 8;
+
+        doc.setFont("helvetica", "normal");
+        doc.text(`Classe Predita: {{ full_text_classification['prediction'] }}`, 10, y);
+        y += 8;
+        doc.text(`Probabilidade Classe 1 (Sensível): {{ "%.4f"|format(full_text_classification.get('probabilities', [0, 0])[1]) }}`, 10, y);
+        y += 10;
+
+        // Adicionando texto processado
+        doc.setFont("helvetica", "bold");
+        doc.text("Texto Processado com Marcação:", 10, y);
+        y += 8;
+
+        let processedText = `{{ highlighted_text | safe }}`.replace(/<[^>]*>/g, ""); // Remove HTML
+        let splitText = doc.splitTextToSize(processedText, 180);
+        doc.setFont("helvetica", "normal");
+        doc.text(splitText, 10, y);
+        y += splitText.length * 5;
+
+        // Classificação por Chunks
+        doc.setFont("helvetica", "bold");
+        doc.text("Classificação por Chunks", 10, y);
+        y += 8;
+
+        {% for chunk in chunked_classification %}
+            doc.text("Chunk {{ loop.index }} - Classe: {{ chunk['prediction'] }} - Probabilidade: {{ chunk.get('probabilities', [0, 0])[1] }}", 10, y);
+            y += 6;
+        {% endfor %}
+
+        y += 10;
+
+        // Adicionando métricas
+        doc.setFont("helvetica", "bold");
+        doc.text("Métricas Calculadas", 10, y);
+        y += 8;
+
+        doc.setFont("helvetica", "normal");
+        doc.text(`Acurácia: {{ metrics.get("accuracy", "N/A") }}`, 10, y);
+        y += 6;
+        doc.text(`Precisão: {{ metrics.get("precision", "N/A") }}`, 10, y);
+        y += 6;
+        doc.text(`Recall: {{ metrics.get("recall", "N/A") }}`, 10, y);
+        y += 10;
+
+        // Adicionando relatório de classificação
+        doc.setFont("helvetica", "bold");
+        doc.text("Relatório de Classificação", 10, y);
+        y += 8;
+
+        {% for class_label, values in metrics.get("classification_report", {}).items() if class_label not in ["accuracy", "macro avg", "weighted avg"] %}
+            doc.text("Classe {{ class_label }} - Precisão: {{ values['precision'] | round(2) }} - Recall: {{ values['recall'] | round(2) }} - F1-Score: {{ values['f1-score'] | round(2) }}", 10, y);
+            y += 6;
+        {% endfor %}
+
+        doc.save("resultado_classificacao.pdf");
+    }
+</script>
+
+
+<body>
+
+<div class="container">
+    <div class="classification-result">
+        <h1>Resultado da Classificação</h1>
+    
+        <h3>Modelo Utilizado: <span>{{ model_identifier }}</span></h3>
+        <h3>Arquivo: <span>{{ original_filename }}</span></h3>
+    
+        <h4>Classificação do Documento Completo</h4>
+        <p class="prediction">
+            <strong>Classe Predita:</strong> 
+            <span class="{% if full_text_classification['prediction'] == 0 %}class-0{% else %}class-1{% endif %}">
+                {% if full_text_classification['prediction'] == 0 %}
+                    Not Sensitive
+                {% else %}
+                    Sensitive
+                {% endif %}
+            </span>
+        </p>
+
+
+        
+        <p>
+            <strong>Probabilidade Classe 1 (Sensível):</strong> 
+            {{ "%.4f"|format(full_text_classification.get('probabilities', [0, 0])[1]) }}
+        </p>
+    </div>
+
+    <h4>Texto Processado com Marcação</h4>
+    <div class="text-container">
+        <p>{{ highlighted_text | safe }}</p>
+    </div>
+
+
+    
+    <h4>Classificação por Chunks</h4>
+    <table>
+        <tr>
+            <th>Chunk</th>
+            <th>Classe Predita</th>
+            <th>Probabilidade Classe 1</th>
+        </tr>
+        {% for chunk in chunked_classification %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ chunk['prediction'] }}</td>
+            <td>{{ chunk.get('probabilities', [0, 0])[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h4>Métricas Calculadas</h4>
+    <table>
+        <tr>
+            <th>Métrica</th>
+            <th>Valor</th>
+        </tr>
+        <tr>
+            <td><strong>Full Text Class 1:</strong></td>
+            <td>{{ metrics.get("full_text_class_1", "N/A") }}</td>
+        </tr>
+        <tr>
+            <td><strong>Média de Probabilidade Classe 1 (Chunks):</strong></td>
+            <td>{{ metrics.get("average_chunk_class_1", "N/A") }}</td>
+        </tr>
+        <tr>
+            <td><strong>Acurácia:</strong></td>
+            <td>{{ metrics.get("accuracy", "N/A") }}</td>
+        </tr>
+        <tr>
+            <td><strong>Precisão:</strong></td>
+            <td>{{ metrics.get("precision", "N/A") }}</td>
+        </tr>
+        <tr>
+            <td><strong>Recall:</strong></td>
+            <td>{{ metrics.get("recall", "N/A") }}</td>
+        </tr>
+    </table>
+
+    <h4>Relatório de Classificação</h4>
+    <table class="classification-report-table">
+        <tr>
+            <th>Classe</th>
+            <th>Precisão</th>
+            <th>Recall</th>
+            <th>F1-Score</th>
+            <th>Suporte</th>
+        </tr>
+        {% for class_label, values in metrics.get("classification_report", {}).items() if class_label not in ["accuracy", "macro avg", "weighted avg"] %}
+        <tr>
+            <td>{{ class_label }}</td>
+            <td>{{ values["precision"] | round(2) }}</td>
+            <td>{{ values["recall"] | round(2) }}</td>
+            <td>{{ values["f1-score"] | round(2) }}</td>
+            <td>{{ values["support"] }}</td>
+        </tr>
+        {% endfor %}
+        <tr class="highlight">
+            <td><strong>Acurácia</strong></td>
+            <td colspan="4">
+                {{ metrics.get("classification_report", {}).get("accuracy", "N/A") | float | round(2) if metrics.get("classification_report", {}).get("accuracy", "N/A") != "N/A" else "N/A" }}
+            </td>
+            
+        </tr>
+        <tr>
+            <td><strong>Média Macro</strong></td>
+            <td>{{ metrics.get("classification_report", {}).get("macro avg", {}).get("precision", 0) | round(2) }}</td>
+            <td>{{ metrics.get("classification_report", {}).get("macro avg", {}).get("recall", 0) | round(2) }}</td>
+            <td>{{ metrics.get("classification_report", {}).get("macro avg", {}).get("f1-score", 0) | round(2) }}</td>
+            <td>{{ metrics.get("classification_report", {}).get("macro avg", {}).get("support", "N/A") }}</td>
+        </tr>
+        <tr>
+            <td><strong>Média Ponderada</strong></td>
+            <td>{{ metrics.get("classification_report", {}).get("weighted avg", {}).get("precision", 0) | round(2) }}</td>
+            <td>{{ metrics.get("classification_report", {}).get("weighted avg", {}).get("recall", 0) | round(2) }}</td>
+            <td>{{ metrics.get("classification_report", {}).get("weighted avg", {}).get("f1-score", 0) | round(2) }}</td>
+            <td>{{ metrics.get("classification_report", {}).get("weighted avg", {}).get("support", "N/A") }}</td>
+        </tr>
+    </table>
+    
+
+
+    <div class="buttons">
+        <button class="button button-export" onclick="gerarPDF()">Salvar como PDF</button>
+        <a href="{{ url_for('classify_document') }}" class="button button-back">Classificar outro documento</a>
+        <a href="{{ url_for('home') }}" class="button button-red">Voltar para Home</a>
+    </div>
+</div>
+
+</body>
+</html>

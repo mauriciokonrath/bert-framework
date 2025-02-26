@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Classification</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+</head>
+<body>
+
+    <!-- ====== Header ====== -->
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            <span>Document Classifier</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_bp.dashboard') }}">Administration</a></li>
+                <li><a href="{{ url_for('classify_document') }}">Classification</a></li>
+                <li><a href="#teams">Team</a></li>  <!-- Novo botão -->
+                <li><a href="#about">About</a></li>  <!-- Novo botão -->
+            </ul>
+        </nav>
+        <a href="{{ url_for('contact') }}" class="cta-button">Get in touch</a>
+    </header>
+
+    <!-- ====== Hero Section ====== -->
+    <section class="hero">
+        <h1>Classify your document here</h1>
+        <p>Document classification</p>
+        <div class="classify-container">
+            <a href="{{ url_for('classify_document') }}" class="classify-button">Classify</a>
+        </div>
+    </section>
+  
+    <!-- ====== About Section ====== -->
+    <section id="about" class="info-section">
+        <h2>About the Project - Document Classifier</h2>
+        
+        <div class="about-container">
+            <div class="about-text">
+                <p>
+                    The <strong>Document Classifier</strong> is an advanced document classification system powered by artificial intelligence. 
+                    The project utilizes <strong>neural networks</strong> and <strong>Machine Learning models</strong> to analyze text and determine whether a 
+                    document contains <strong>sensitive content</strong> or not.
+                </p>
+                <p>
+                    Its goal is to offer an efficient and automated solution for document categorization, allowing users to upload 
+                    files in <strong>PDF, TXT,</strong> or <strong>JSON</strong> format and receive a detailed analysis with metrics such as 
+                    precision, recall, and accuracy.
+                </p>
+            </div>
+    
+            <div class="about-text">
+                <p>
+                    Additionally, the project includes an administrative panel for managing trained models, enabling 
+                    <strong>training of new models</strong> and customization of the system according to user needs.
+                </p>
+                <p>
+                    This project was developed with a focus on <strong>efficiency</strong> and <strong>accessibility</strong>, aiming to make 
+                    document analysis and categorization more streamlined and accurate.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <!-- ====== Team Section ====== -->
+    <section id="teams" class="info-section">
+        <h2>Our Team</h2>
+        <p>Meet the team behind this project.</p>
+
+        <div class="team-members">
+            <div class="member">
+                <div class="circular-portrait">
+                    <img src="./static/placeholder.jpg" alt="Maurício Konrath" onerror="this.src='./static/placeholder.jpg'">
+                </div>
+                <a href="#" target="_blank">
+                    <p>Maurício Konrath</p>
+                </a>  
+            </div>
+
+            <div class="member">
+                <div class="circular-portrait">
+                    <img src="./static/placeholder.jpg" alt="Wellington F. Silvano" onerror="this.src='./static/placeholder.jpg'">
+                </div>
+                <a href="#" target="_blank">
+                    <p>Wellington F. Silvano</p>
+                </a>  
+            </div>
+        </div>
+    </section>
+
+    <!-- Botões de navegação -->
+    <div class="buttons-container">
+        <a href="{{ url_for('home') }}"><button class="button button-red">Return to Home</button></a>
+    </div>
+
+</body>
+</html>

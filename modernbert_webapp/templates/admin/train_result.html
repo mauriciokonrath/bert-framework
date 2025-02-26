@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+</head>
+<body>
+
+<div class="result-container">
+    <h2>Training Result</h2>
+    <p>The training was completed with the following results:</p>
+
+    <div class="metrics-box">
+        <p><strong>Loss:</strong> {{ metrics.eval_loss }}</p>
+
+        {% if metrics.eval_accuracy %}
+        <p><strong>Accuracy:</strong> {{ metrics.eval_accuracy }}</p>
+        {% endif %}
+
+        {% if metrics.eval_precision %}
+        <p><strong>Precision:</strong> {{ metrics.eval_precision }}</p>
+        {% endif %}
+
+        {% if metrics.eval_recall %}
+        <p><strong>Recall:</strong> {{ metrics.eval_recall }}</p>
+        {% endif %}
+
+        {% if metrics.eval_f1 %}
+        <p><strong>F1-Score:</strong> {{ metrics.eval_f1 }}</p>
+        {% endif %}
+
+        {% if metrics.train_runtime %}
+        <p><strong>Training Time:</strong> {{ metrics.train_runtime }} seconds</p>
+        {% endif %}
+    </div>
+
+    <div class="button-container">
+        <button onclick="history.back()" class="button button-back">Back</button>
+        <a href="{{ url_for('home') }}" class="button button-red">Return to Home</a>
+    </div>
+</div>
+
+</body>
+</html>

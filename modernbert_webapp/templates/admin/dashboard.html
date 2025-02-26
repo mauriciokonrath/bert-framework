@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <h1>Administration Dashboard</h1>
+
+    <nav>
+        <a href="{{ url_for('admin_bp.train') }}">Train Model</a>
+        <a href="{{ url_for('admin_bp.list_models') }}">List Models</a>
+    </nav>
+
+    <div class="button-container">
+        <!--  <button onclick="history.back()" class="button button-back">Back</button> -->
+        <a href="{{ url_for('home') }}" class="button button-red">Return to Home</a>
+    </div>
+</div>
+
+</body>
+</html>

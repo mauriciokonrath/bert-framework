@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Models</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+</head>
+<body>
+
+<div class="models-container">
+    <h1>Available Models</h1>
+
+    {% if available_models %}
+        <ul class="models-list">
+            {% for model in available_models %}
+                <li>{{ model }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No models available.</p>
+    {% endif %}
+
+    <div class="button-container">
+        <button onclick="history.back()" class="button button-back">Back</button>
+        <a href="{{ url_for('home') }}" class="button button-red">Return to Home</a>
+    </div>
+</div>
+
+</body>
+</html>

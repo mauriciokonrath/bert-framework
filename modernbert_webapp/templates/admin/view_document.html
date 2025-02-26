@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização do Documento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='icon.png') }}">
+    <script>
+        function decryptText(encryptedText, key) {
+            // Função de decriptação será feita em backend, por questões de segurança.
+            alert("Decriptação não permitida diretamente na interface.");
+        }
+    </script>
+</head>
+<body>
+    <div class="document-container">
+        <h1>Documento Analisado</h1>
+        <p>Clique nas partes sensíveis para tentar descriptografar:</p>
+
+        <div class="document-content">
+            {{ highlighted_text | safe }}
+        </div>
+    </div>
+</body>
+</html>
