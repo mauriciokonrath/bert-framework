@@ -1,0 +1,1239 @@
+/* ====== Reset ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ====== Suavizando a rolagem ====== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ====== Fundo Global ====== */
+body {
+    background-color: #EFFAFD; /* Pale Blue */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+
+/* ====== Header ====== */
+header {
+    background-color: #ffffff; /* Fundo branco */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px; /* Maior altura */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 90px; /* Altura maior */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #4A8BDF; /* Royal Blue */
+}
+
+.logo img {
+    width: 70px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #A0006D; /* Eggplant */
+}
+
+/* Botão no header */
+.cta-button {
+    background-color: #4A8BDF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #3576C6;
+}
+
+.classify-container {
+    text-align: center; /* Centraliza o conteúdo */
+    margin-top: 20px;
+}
+
+.classify-button {
+    background-color: #A0006D; /* Eggplant */
+    color: white;
+    padding: 20px 50px; /* Aumentando ainda mais o tamanho */
+    font-size: 22px; /* Fonte maior */
+    font-weight: bold;
+    border: none;
+    border-radius: 12px; /* Bordas mais arredondadas */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+    width: 260px; /* Definindo uma largura fixa maior */
+    text-align: center;
+}
+
+.classify-button:hover {
+    background-color: #8A005C; /* Cor mais escura no hover */
+    transform: scale(1.1); /* Efeito de leve aumento */
+}
+
+
+/* ====== Hero Section ====== */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    padding: 120px 20px;
+    background-color: #EFFAFD; /* Pale Blue */
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #4A8BDF; /* Royal Blue */
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    background-color: #A0006D; /* Eggplant */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.hero-button:hover {
+    background-color: #8A005C;
+}
+
+/* Imagem da hero */
+.hero-image img {
+    max-width: 500px;
+}
+
+/* ====== Botões da Home ====== */
+.buttons-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background-color: #3576C6;
+    transform: scale(1.05);
+}
+
+/* ====== Responsividade ====== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+}
+
+/* ====== Seções de Informações ====== */
+.info-section {
+    background-color: #EFFAFD; /* Pale Blue */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.info-section h2 {
+    color: #4A8BDF; /* Royal Blue */
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    font-size: 18px;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Ajuste de espaçamento para evitar sobreposição com o header fixo */
+#about, #teams {
+    padding-top: 100px;
+    margin-top: -100px; /* Compensação do header fixo */
+}
+
+/* ====== Seção de Contato ====== */
+.contact-section {
+    text-align: center;
+    background-color: #EFFAFD; /* Pale Blue */
+    padding: 100px 20px;
+}
+
+.contact-section h1 {
+    font-size: 36px;
+    color: #4A8BDF; /* Royal Blue */
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* ====== Botões de Redes Sociais ====== */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-button {
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #EFFAFD;;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.social-button:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos específicos para cada rede social */
+.facebook {
+    background-color: #3b5998;
+}
+.facebook:hover {
+    background-color: #2d4373;
+}
+
+.twitter {
+    background-color: #1DA1F2;
+}
+.twitter:hover {
+    background-color: #0d8ecf;
+}
+
+.instagram {
+    background-color: #C13584;
+}
+.instagram:hover {
+    background-color: #a12b6f;
+}
+
+.linkedin {
+    background-color: #0077B5;
+}
+.linkedin:hover {
+    background-color: #005582;
+}
+/* ====== Botão de Email ====== */
+.email {
+    background-color: #A0006D; /* Eggplant */
+}
+.email:hover {
+    background-color: #8A005C;
+}
+
+/* ====== Seção de Upload ====== */
+.upload-container {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 600px;
+    margin: 100px auto; /* Centraliza na tela */
+    text-align: center;
+}
+
+/* ====== Título ====== */
+.upload-container h1 {
+    font-size: 28px;
+    color: #4A8BDF; /* Royal Blue */
+    margin-bottom: 20px;
+}
+
+/* ====== Mensagens Flash ====== */
+.flash-messages {
+    list-style: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.flash-messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+}
+
+.flash-messages .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+}
+
+/* ====== Inputs e Selects ====== */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="file"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #4A8BDF; /* Royal Blue */
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* ====== Botão Principal ====== */
+.submit-button {
+    background-color: #A0006D; /* Eggplant */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    margin: 10px;
+}
+
+.submit-button:hover {
+    background-color: #8A005C; /* Eggplant mais escuro */
+    transform: scale(1.05);
+}
+
+/* ====== Botões Secundários (Back) ====== */
+.buttons-container {
+    margin-top: 20px;
+}
+
+.secondary-button {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+    padding: 10px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.secondary-button:hover {
+    background-color: #3576C6; /* Azul mais escuro */
+    transform: scale(1.05);
+}
+
+/* ====== Responsividade ====== */
+@media (max-width: 768px) {
+    .upload-container {
+        width: 90%;
+    }
+}
+
+/* ====== Container Principal ====== */
+.container {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 800px;
+    margin: 100px auto; /* Centraliza na tela */
+    text-align: center;
+}
+
+/* ====== Título Principal ====== */
+.container h1 {
+    font-size: 28px;
+    color: #4A8BDF; /* Royal Blue */
+    margin-bottom: 20px;
+}
+
+/* ====== Subtítulos ====== */
+.container h3, .container h4 {
+    color: #333;
+    margin-top: 20px;
+}
+
+/* ====== Parágrafos ====== */
+.container p {
+    font-size: 18px;
+    color: #444;
+    margin: 10px 0;
+}
+
+/* ====== Tabelas ====== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    max-width: 700px;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+th {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+}
+
+td {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* ====== Botões ====== */
+.buttons {
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #A0006D; /* Eggplant */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #8A005C; /* Eggplant mais escuro */
+    transform: scale(1.05);
+}
+
+/* Botão Vermelho (Back à Home) */
+.button-red {
+    background-color: #dc3545;
+}
+
+.button-red:hover {
+    background-color: #c82333;
+}
+
+/* ====== Responsividade ====== */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
+
+/* ====== Container Principal ====== */
+.dashboard-container {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 600px;
+    margin: 100px auto; /* Centraliza na tela */
+}
+
+/* ====== Título Principal ====== */
+.dashboard-container h1 {
+    font-size: 28px;
+    color: #4A8BDF; /* Royal Blue */
+    margin-bottom: 20px;
+}
+
+/* ====== Navegação ====== */
+.dashboard-container nav {
+    margin-top: 20px;
+}
+
+.dashboard-container nav a {
+    background-color: #A0006D; /* Eggplant */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dashboard-container nav a:hover {
+    background-color: #8A005C; /* Eggplant mais escuro */
+    transform: scale(1.05);
+}
+
+/* ====== Botões ====== */
+.button-container {
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #3576C6; /* Azul mais escuro */
+    transform: scale(1.05);
+}
+
+/* ====== Botão Vermelho (Back à Home) ====== */
+.button-red {
+    background-color: #dc3545;
+}
+
+.button-red:hover {
+    background-color: #c82333;
+}
+
+/* ====== Responsividade ====== */
+@media (max-width: 768px) {
+    .dashboard-container {
+        width: 90%;
+    }
+}
+
+
+/* ====== Container Principal ====== */
+.train-container {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 800px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+/* ====== Título Principal ====== */
+.train-container h1 {
+    font-size: 28px;
+    color: #4A8BDF; /* Royal Blue */
+    margin-bottom: 20px;
+}
+
+/* ====== Formulários ====== */
+fieldset {
+    border: 2px solid #4A8BDF; /* Royal Blue */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4A8BDF; /* Royal Blue */
+}
+
+/* Labels e Inputs */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #4A8BDF;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* ====== Mensagens Flash ====== */
+.flash-messages {
+    list-style: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.flash-messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+}
+
+.flash-messages .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+}
+
+/* ====== Botões ====== */
+.button-container {
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #A0006D; /* Eggplant */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #8A005C; /* Eggplant mais escuro */
+    transform: scale(1.05);
+}
+
+/* Botão Vermelho (Back à Home) */
+.button-red {
+    background-color: #dc3545;
+}
+
+.button-red:hover {
+    background-color: #c82333;
+}
+
+/* ====== Responsividade ====== */
+@media (max-width: 768px) {
+    .train-container {
+        width: 90%;
+    }
+}
+
+/* ====== Container Principal ====== */
+.models-container {
+    background-color: #ffffff; /* Fundo branco */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 600px;
+    margin: 100px auto;
+}
+
+/* ====== Título Principal ====== */
+.models-container h1 {
+    font-size: 28px;
+    color: #4A8BDF; /* Royal Blue */
+    margin-bottom: 20px;
+}
+
+/* ====== Lista de Modelos ====== */
+.models-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.models-list li {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+
+.models-list li:hover {
+    background-color: #3576C6; /* Azul mais escuro */
+    transform: scale(1.05);
+}
+
+/* ====== Botões ====== */
+.button-container {
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #A0006D; /* Eggplant */
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #8A005C; /* Eggplant mais escuro */
+    transform: scale(1.05);
+}
+
+/* Botão Vermelho (Back à Home) */
+.button-red {
+    background-color: #dc3545;
+}
+
+.button-red:hover {
+    background-color: #c82333;
+}
+
+/* ====== Responsividade ====== */
+@media (max-width: 768px) {
+    .models-container {
+        width: 90%;
+    }
+}
+
+/* ====== Botões Gerais ====== */
+.button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* ====== Botões de Back (Azul Royal) ====== */
+.button-back {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+}
+
+.button-back:hover {
+    background-color: #3576C6; /* Azul mais escuro no hover */
+    transform: scale(1.05);
+}
+
+/* ====== Botões de Back para Home (Vermelho) ====== */
+.button-home {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+.button-home:hover {
+    background-color: #c82333; /* Vermelho mais escuro no hover */
+    transform: scale(1.05);
+}
+
+/* ====== Reset Padrão ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ====== Estrutura Principal ====== */
+.container {
+    background-color: #EFFAFD; /* Pale Blue */
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* ====== Cabeçalhos ====== */
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #4A8BDF; /* Royal Blue */
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* ====== Estilização das Tabelas ====== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: left;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+th {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+    text-align: center;
+}
+
+td {
+    background-color: white;
+}
+
+/* ====== Seção de Métricas ====== */
+.metrics-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== Relatório de Classificação ====== */
+.classification-report {
+    background-color: white;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    overflow-x: auto;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+/* ====== Botões ====== */
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.button-back {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+}
+
+.button-back:hover {
+    background-color: #3576C6;
+}
+
+.button-red {
+    background-color: #dc3545; /* Eggplant */
+    color: white;
+}
+
+.button-red:hover {
+    background-color: #8A005C;
+}
+
+/* ====== Responsividade ====== */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* ====== Relatório de Classificação ====== */
+.classification-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.classification-report-table th,
+.classification-report-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.classification-report-table th {
+    background-color: #4A8BDF; /* Royal Blue */
+    color: white;
+}
+
+.classification-report-table .highlight {
+    background-color: #EFFAFD; /* Pale Blue */
+    font-weight: bold;
+}
+
+/* Mantendo a seção organizada */
+.classification-result {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Classe Predita */
+.prediction {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Cores para classes preditivas */
+.class-0 {
+    color: green;
+}
+
+.class-1 {
+    color: red;
+}
+
+.loader {
+    border: 5px solid #f3f3f3; /* Fundo do spinner */
+    border-top: 5px solid #4A8BDF; /* Cor principal */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+#loading .loader {
+    margin-top: 10px;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#team {
+    margin: 20px 0px;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .team-members {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Alinha verticalmente */
+    gap: 40px; /* Espaçamento entre os membros */
+    flex-wrap: wrap; /* Garante que os membros não fiquem cortados */
+    text-align: center; /* Centraliza o texto dentro dos elementos */
+  }
+   
+  .member {
+    display: flex;
+    flex-direction: column; /* Garante que imagem e nome fiquem um abaixo do outro */
+    align-items: center; /* Centraliza horizontalmente */
+  }
+  
+  .circular-portrait {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .member p {
+    margin-top: 10px; /* Adiciona espaço entre a imagem e o nome */
+    font-weight: bold;
+    text-align: center; /* Centraliza o nome */
+  }
+  
+  .circular-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .circular-portrait:hover {
+    transform: scale(1.05);
+  }
+  
+  .member a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    display: block;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .member a:hover {
+    color: #007BFF;
+  }
+  .about-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-text {
+    flex: 1;
+    text-align: justify;
+}
+/* Garante que o layout fique centralizado */
+.result-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8fcff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título principal */
+.result-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Texto informativo */
+.result-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Lista de métricas */
+.result-container ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.result-container ul li {
+    font-size: 18px;
+    color: #333;
+    background: #e3f2fd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+/* Container centralizado e estilizado */
+.result-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8fcff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Lista de métricas estilizada */
+.result-container ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.result-container ul li {
+    font-size: 18px;
+    color: #333;
+    background: #e3f2fd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+/* Botões */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.options-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.button-advanced {
+    background-color: #6c757d; /* Cinza moderno */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.button-advanced:hover {
+    background-color: #5a6268;
+}
+
+.text-container {
+    margin-top: 15px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-container mark {
+    background-color: #ffeb3b;
+    color: #000;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+/* Novo botão para exportar PDF */
+.button-export {
+    background-color: #f39c12; /* Cor laranja para destacar a ação */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.button-export:hover {
+    background-color: #e67e22;
+}
