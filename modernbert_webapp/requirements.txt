@@ -1,0 +1,12 @@
+flask
+PyMuPDF
+transformers
+torch
+datasets
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+pdfplumber
+accelerate>=0.26.0
